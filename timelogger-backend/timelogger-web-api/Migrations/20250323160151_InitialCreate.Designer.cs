@@ -12,8 +12,8 @@ using timelogger_web_api.Data;
 namespace timelogger_web_api.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250321191654_AddNavProp")]
-    partial class AddNavProp
+    [Migration("20250323160151_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -130,7 +130,7 @@ namespace timelogger_web_api.Migrations
                     b.HasOne("timelogger_web_api.Models.Entities.Project", null)
                         .WithMany()
                         .HasForeignKey("ProjectId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 #pragma warning restore 612, 618
