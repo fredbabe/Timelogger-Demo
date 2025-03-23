@@ -1,0 +1,63 @@
+name: Deploy project to PROD
+
+on:
+  workflow_dispatch:
+
+jobs:
+  # 1) Deploy MSSQL Infrastructure
+  deployMSSQLInfrastructure:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - name: Deploy MSSQL
+        run: echo "Simulating MSSQL Infrastructure deployment..."
+
+  # 2) Deploy API Infrastructure
+  deployAPIInfrastructure:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - name: Deploy API
+        run: echo "Simulating API Infrastructure deployment..."
+
+  # 3) Deploy Frontend Infrastructure
+  deployFrontendInfrastructure:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - name: Deploy Frontend
+        run: echo "Simulating Frontend Infrastructure deployment..."
+
+  # 4) Build and Test
+  buildAndTest:
+    runs-on: ubuntu-latest
+    needs: 
+      - deployMSSQLInfrastructure
+      - deployAPIInfrastructure
+      - deployFrontendInfrastructure
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Build
+        run: echo "Simulating build step..."
+
+      - name: Test
+        run: echo "Simulating test step..."
+
+  # 5) Mock Deployment of the Code
+  mockDeployCode:
+    runs-on: ubuntu-latest
+    needs: buildAndTest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Deploy Code to Production (Mock)
+        run: echo "Mock deploying code to production..."

@@ -1,0 +1,6 @@
+@timelogger_web_api_HostAddress = http://localhost:5222
+
+GET {{timelogger_web_api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
