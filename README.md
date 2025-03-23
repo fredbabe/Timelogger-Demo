@@ -134,7 +134,12 @@
   - Require PR reviews
   - Block merges if tests or pipelines fail
 
-  **Logging & Monitoring:**  
-  Add more observability to catch failures in production.
+  **Others:**  
+  - Add more observability to catch failures in production.
+  - Add possibility to adjust registrations.
+  - Add total amount of hours registrated on projects.
+  - Deactivate projects instead of only deleting them. 
+
+  
 </details>
 # Timelogger-Demo
