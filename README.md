@@ -92,7 +92,7 @@
   Due to time constraints, the pipeline is a **partial implementation**. What has been implemented:
 
   - ✅ A GitHub Action for building and testing both backend and frontend
-  - 🔜 Terraform-based Infrastructure as Code for Google CLoud (WIP)
+  - 🔜 Terraform-based Infrastructure as Code for Google CLoud
   - 🔜 NSwag type generation not yet integrated
 
   ### The pipeline includes:
