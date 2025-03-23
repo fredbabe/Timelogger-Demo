@@ -36,7 +36,7 @@
     dotnet ef database update
     dotnet run
     ```
-  - In the frontend project, run:
+  - In the frontend project, make sure you run node v18 or above and run:
     ```bash
     npm install
     npm run dev
