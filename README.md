@@ -142,4 +142,3 @@
 
   
 </details>
-# Timelogger-Demo
