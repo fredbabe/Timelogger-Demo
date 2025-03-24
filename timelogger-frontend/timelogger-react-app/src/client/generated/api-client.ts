@@ -376,7 +376,7 @@ export class Client {
     url_ = url_.replace(/[?&]$/, "");
 
     let options_: AxiosRequestConfig = {
-      method: "PUT",
+      method: "PATCH",
       url: url_,
       headers: {
         Accept: "text/plain",
@@ -458,7 +458,7 @@ export class Client {
     projectId: string | undefined,
     cancelToken?: CancelToken
   ): Promise<Project> {
-    let url_ = this.baseUrl + "/api/projects/opem-project?";
+    let url_ = this.baseUrl + "/api/projects/open-project?";
     if (projectId === null)
       throw new Error("The parameter 'projectId' cannot be null.");
     else if (projectId !== undefined)
@@ -466,7 +466,7 @@ export class Client {
     url_ = url_.replace(/[?&]$/, "");
 
     let options_: AxiosRequestConfig = {
-      method: "PUT",
+      method: "PATCH",
       url: url_,
       headers: {
         Accept: "text/plain",
@@ -631,7 +631,8 @@ export class Client {
     projectId: string,
     cancelToken?: CancelToken
   ): Promise<GetRegistrationsForProjectResponse[]> {
-    let url_ = this.baseUrl + "/api/registration/get-registrations-of-project?";
+    let url_ =
+      this.baseUrl + "/api/registrations/get-registrations-of-project?";
     if (projectId === undefined || projectId === null)
       throw new Error(
         "The parameter 'projectId' must be defined and cannot be null."
@@ -730,7 +731,7 @@ export class Client {
     body: CreateRegistrationDTORequest | undefined,
     cancelToken?: CancelToken
   ): Promise<Registration> {
-    let url_ = this.baseUrl + "/api/registration/create-registration";
+    let url_ = this.baseUrl + "/api/registrations/create-registration";
     url_ = url_.replace(/[?&]$/, "");
 
     const content_ = JSON.stringify(body);
@@ -812,6 +813,90 @@ export class Client {
       );
     }
     return Promise.resolve<Registration>(null as any);
+  }
+
+  /**
+   * @param registrationId (optional)
+   * @return Success
+   */
+  deleteRegistration(
+    registrationId: string | undefined,
+    cancelToken?: CancelToken
+  ): Promise<void> {
+    let url_ = this.baseUrl + "/api/registrations/delete-registration?";
+    if (registrationId === null)
+      throw new Error("The parameter 'registrationId' cannot be null.");
+    else if (registrationId !== undefined)
+      url_ += "registrationId=" + encodeURIComponent("" + registrationId) + "&";
+    url_ = url_.replace(/[?&]$/, "");
+
+    let options_: AxiosRequestConfig = {
+      method: "DELETE",
+      url: url_,
+      headers: {},
+      cancelToken,
+    };
+
+    return this.instance
+      .request(options_)
+      .catch((_error: any) => {
+        if (isAxiosError(_error) && _error.response) {
+          return _error.response;
+        } else {
+          throw _error;
+        }
+      })
+      .then((_response: AxiosResponse) => {
+        return this.processDeleteRegistration(_response);
+      });
+  }
+
+  protected processDeleteRegistration(response: AxiosResponse): Promise<void> {
+    const status = response.status;
+    let _headers: any = {};
+    if (response.headers && typeof response.headers === "object") {
+      for (const k in response.headers) {
+        if (response.headers.hasOwnProperty(k)) {
+          _headers[k] = response.headers[k];
+        }
+      }
+    }
+    if (status === 200) {
+      return Promise.resolve<void>(null as any);
+    } else if (status === 500) {
+      const _responseText = response.data;
+      let result500: any = null;
+      let resultData500 = _responseText;
+      result500 = ProblemDetails.fromJS(resultData500);
+      return throwException(
+        "Server Error",
+        status,
+        _responseText,
+        _headers,
+        result500
+      );
+    } else if (status === 400) {
+      const _responseText = response.data;
+      let result400: any = null;
+      let resultData400 = _responseText;
+      result400 = ProblemDetails.fromJS(resultData400);
+      return throwException(
+        "Bad Request",
+        status,
+        _responseText,
+        _headers,
+        result400
+      );
+    } else if (status !== 200 && status !== 204) {
+      const _responseText = response.data;
+      return throwException(
+        "An unexpected server error occurred.",
+        status,
+        _responseText,
+        _headers
+      );
+    }
+    return Promise.resolve<void>(null as any);
   }
 }
 

@@ -96,7 +96,7 @@ namespace timelogger_web_api.Controllers
         /// <summary>
         /// Complete project.
         /// </summary>
-        [HttpPut("complete-project", Name = "CompleteProject")]
+        [HttpPatch("complete-project", Name = "CompleteProject")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Project))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ProblemDetails))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ProblemDetails))]
@@ -142,7 +142,7 @@ namespace timelogger_web_api.Controllers
         /// <summary>
         /// Open project.
         /// </summary>
-        [HttpPut("opem-project", Name = "OpenProject")]
+        [HttpPatch("open-project", Name = "OpenProject")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Project))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ProblemDetails))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ProblemDetails))]
@@ -175,12 +175,12 @@ namespace timelogger_web_api.Controllers
             }
             catch (Exception e)
             {
-                logger.LogError(e, "An unexpected error occurred while completing the project.");
+                logger.LogError(e, "An unexpected error occurred while opening the project.");
                 return StatusCode(StatusCodes.Status500InternalServerError, new ProblemDetails
                 {
                     Status = StatusCodes.Status500InternalServerError,
                     Title = "Internal Server Error",
-                    Detail = "An unexpected error occurred while completing the project.",
+                    Detail = "An unexpected error occurred while opening the project.",
                 });
             }
         }
@@ -221,12 +221,12 @@ namespace timelogger_web_api.Controllers
             }
             catch (Exception e)
             {
-                logger.LogError(e, "An unexpected error occurred while completing the project.");
+                logger.LogError(e, "An unexpected error occurred while deleting the project.");
                 return StatusCode(StatusCodes.Status500InternalServerError, new ProblemDetails
                 {
                     Status = StatusCodes.Status500InternalServerError,
                     Title = "Internal Server Error",
-                    Detail = "An unexpected error occurred while completing the project.",
+                    Detail = "An unexpected error occurred while deleting the project.",
                 });
             }
         }

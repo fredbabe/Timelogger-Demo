@@ -57,7 +57,7 @@ export const RegistrationSection = () => {
       return; // Stop submission if error
     }
 
-    var request = {
+    const request = {
       description: data.description,
       hoursWorked: data.workingHours,
       projectId: data.projectId,

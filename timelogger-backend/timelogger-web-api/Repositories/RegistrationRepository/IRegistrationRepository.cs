@@ -8,5 +8,7 @@ namespace timelogger_web_api.Repositories.RegistrationRepository
         public Task<Registration> CreateRegistration(Registration registration);
 
         public Task<IEnumerable<GetRegistrationsForProjectResponse>> GetRegistrationOfProject(GetRegistrationsForProjectRequest request);
+
+        public Task DeleteRegistration(Guid registrationId);
     }
 }

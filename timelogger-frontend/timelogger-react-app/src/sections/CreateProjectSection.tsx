@@ -54,7 +54,7 @@ export const CreateProjectSection = () => {
       return; // Stop submission if error
     }
 
-    var request = {
+    const request = {
       name: data.projectName,
       customerId: data.customerId,
       deadline: data.deadline,
@@ -124,9 +124,7 @@ export const CreateProjectSection = () => {
                 label="Create Project"
               />
 
-              {isSuccessCreatingProject && (
-                <p>Customer created successfully!</p>
-              )}
+              {isSuccessCreatingProject && <p>Project created successfully!</p>}
               {isCreatingProjectError && (
                 <p className="text-red-500">
                   Failed to create customer. Please try again.

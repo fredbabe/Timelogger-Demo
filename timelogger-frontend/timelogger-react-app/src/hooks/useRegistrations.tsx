@@ -4,10 +4,9 @@ import { CreateRegistrationDTORequest } from "../client/generated/api-client";
 
 const useRegistrations = (projectId?: string) => {
   return useQuery({
-    refetchOnMount: false,
+    refetchOnMount: true,
     refetchOnWindowFocus: false,
     retry: false,
-    enabled: false,
     queryKey: ["registrations", projectId],
     queryFn: async () => {
       const response = await apiClient.getRegistrationsOfProject(
@@ -26,4 +25,16 @@ const useCreateRegistrationMutation = () => {
   });
 };
 
-export { useRegistrations, useCreateRegistrationMutation };
+const useDeleteRegistrationMutation = () => {
+  return useMutation({
+    mutationFn: async (registrationId: string) => {
+      apiClient.deleteRegistration(registrationId);
+    },
+  });
+};
+
+export {
+  useRegistrations,
+  useCreateRegistrationMutation,
+  useDeleteRegistrationMutation,
+};

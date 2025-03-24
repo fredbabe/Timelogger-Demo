@@ -23,7 +23,7 @@ export const Button = (props: ButtonProps) => {
         "px-[5px] py-[16px] w-[200px] h-[40px] bg-black text-white rounded-md text-center justify-center font-medium flex items-center"
       )}
     >
-      <p className="mr-2">{label}</p>
+      <p>{label}</p>
       {isLoading && <Spinner />}
     </button>
   );

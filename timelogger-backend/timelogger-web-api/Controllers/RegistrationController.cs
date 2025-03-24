@@ -8,7 +8,7 @@ using timelogger_web_api.Services.RegistrationService;
 namespace timelogger_web_api.Controllers
 {
     [ApiController]
-    [Route("api/registration")]
+    [Route("api/registrations")]
     public class RegistrationController : ControllerBase
     {
         private readonly IRegistrationService registrationService;
@@ -100,6 +100,52 @@ namespace timelogger_web_api.Controllers
                     Status = StatusCodes.Status500InternalServerError,
                     Title = "Internal Server Error",
                     Detail = "An unexpected error occurred while creating the registration."
+                });
+            }
+        }
+
+        ///// <summary>
+        ///// Delete registration
+        ///// </summary>
+        [HttpDelete("delete-registration", Name = "DeleteRegistration")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ProblemDetails))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ProblemDetails))]
+        public async Task<IActionResult> DeleteRegistration([FromQuery] Guid registrationId)
+        {
+            try
+            {
+                await registrationService.DeleteRegistration(registrationId);
+                return Ok();
+            }
+            catch (DbUpdateException e)
+            {
+                logger.LogError(e, "A database constraint violation occurred");
+                return BadRequest(new ProblemDetails
+                {
+                    Status = StatusCodes.Status400BadRequest,
+                    Title = "Bad Request",
+                    Detail = "A data validation error occurred. Please check your input and try again."
+                });
+            }
+            catch (ValidationException e)
+            {
+                logger.LogError(e, "RegistrationId is not valid.");
+                return BadRequest(new ProblemDetails
+                {
+                    Status = StatusCodes.Status400BadRequest,
+                    Title = "Bad Request",
+                    Detail = "RegistrationId is not valid."
+                });
+            }
+            catch (Exception e)
+            {
+                logger.LogError(e, "An unexpected error occurred while deleting the registration.");
+                return StatusCode(StatusCodes.Status500InternalServerError, new ProblemDetails
+                {
+                    Status = StatusCodes.Status500InternalServerError,
+                    Title = "Internal Server Error",
+                    Detail = "An unexpected error occurred while deleting the registration.",
                 });
             }
         }

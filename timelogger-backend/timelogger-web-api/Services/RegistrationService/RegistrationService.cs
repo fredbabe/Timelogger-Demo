@@ -1,4 +1,5 @@
-﻿using timelogger_web_api.Models.DTOs.RegistrationDTOs;
+﻿using Microsoft.AspNetCore.Mvc;
+using timelogger_web_api.Models.DTOs.RegistrationDTOs;
 using timelogger_web_api.Models.Entities;
 using timelogger_web_api.Repositories.RegistrationRepository;
 using timelogger_web_api.Services.ProjectService;
@@ -42,9 +43,16 @@ namespace timelogger_web_api.Services.RegistrationService
             return await registrationRepository.CreateRegistration(registration);
         }
 
+        public async Task DeleteRegistration([FromQuery] Guid registrationId)
+        {
+            await registrationRepository.DeleteRegistration(registrationId);
+        }
+
         public async Task<IEnumerable<GetRegistrationsForProjectResponse>> GetRegistrationOfProject(GetRegistrationsForProjectRequest request)
         {
             return await registrationRepository.GetRegistrationOfProject(request);
         }
+
+
     }
 }

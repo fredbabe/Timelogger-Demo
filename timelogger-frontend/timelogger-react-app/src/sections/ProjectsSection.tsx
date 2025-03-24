@@ -14,7 +14,7 @@ export const ProjectsSection = () => {
   // Sort project funcionality
   useEffect(() => {
     if (data) {
-      let sortedProjects = [...data];
+      const sortedProjects = [...data];
 
       if (sortType === "latestDeadline") {
         // Sort projects with the nearest upcoming deadline

@@ -22,6 +22,17 @@ namespace timelogger_web_api.Repositories.RegistrationRepository
             return registration;
         }
 
+        public async Task DeleteRegistration(Guid registrationId)
+        {
+            var registration = await context.Registrations.FindAsync(registrationId);
+
+            if (registration != null)
+            {
+                context.Registrations.Remove(registration);
+                await context.SaveChangesAsync();
+            }
+        }
+
         public async Task<IEnumerable<GetRegistrationsForProjectResponse>> GetRegistrationOfProject(GetRegistrationsForProjectRequest request)
         {
             var registrations = await context.Registrations
@@ -38,4 +49,6 @@ namespace timelogger_web_api.Repositories.RegistrationRepository
             return registrations;
         }
     }
+
+
 }
