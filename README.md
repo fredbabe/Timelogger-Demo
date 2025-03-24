@@ -36,7 +36,7 @@
     dotnet ef database update
     dotnet run
     ```
-  - In the frontend project, run:
+  - In the frontend project, make sure you run node v18 or above and run:
     ```bash
     npm install
     npm run dev
@@ -92,7 +92,7 @@
   Due to time constraints, the pipeline is a **partial implementation**. What has been implemented:
 
   - ✅ A GitHub Action for building and testing both backend and frontend
-  - 🔜 Terraform-based Infrastructure as Code for Google CLoud (WIP)
+  - 🔜 Terraform-based Infrastructure as Code for Google CLoud
   - 🔜 NSwag type generation not yet integrated
 
   ### The pipeline includes:
@@ -134,7 +134,12 @@
   - Require PR reviews
   - Block merges if tests or pipelines fail
 
-  **Logging & Monitoring:**  
-  Add more observability to catch failures in production.
+  **Others:**  
+  - Add more observability to catch failures in production.
+  - Add possibility to adjust registrations.
+  - Add total amount of hours registrated on projects.
+  - Deactivate projects instead of only deleting them.
+  - Add unit tests for all frontend components.
+
+  
 </details>
-# Timelogger-Demo
