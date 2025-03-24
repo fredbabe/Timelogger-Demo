@@ -26,7 +26,7 @@ jobs:
       # credentials_json: ${{ secrets.GCP_SA_KEY }}
 
     - name: Set up Cloud SDK
-      run: F
+      run: echo "Simulating cloud sdk setup..."
       # uses: google-github-actions/setup-gcloud@v1
       # with:
       #  project_id: ${{ secrets.GCP_PROJECT_ID }}
@@ -37,21 +37,23 @@ jobs:
        # GOOGLE_CREDENTIALS: ${{ secrets.GCP_SA_KEY }}
 
     - name: Terraform Format
-      run: terraform fmt -check
+      run: echo "Simulating TF format..."
       continue-on-error: true
 
     - name: Terraform Plan
-      #run: terraform plan -out=tfplan
+      run: echo "Simulating TF plan..."
       #env:
         # USE VARIABLES FROM VAR FILE
 
     - name: Terraform Apply
-      #run: terraform apply tfplan
+      run: echo "Simulating TF apply..."
       #env:
         #GOOGLE_CREDENTIALS: ${{ secrets.GCP_SA_KEY }}
 
     - name: Export Terraform Outputs
+      run: echo "Simulating TF export..."
       #id: terraform-outputs
 
     - name: Save DB Connection Name
+      run: echo "Simulating save DB connection name..."
       #uses: actions/github-script@v6
