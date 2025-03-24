@@ -41,6 +41,7 @@
     npm install
     npm run dev
     ```
+  - Install and setup a MSSQL server. Update the connection string as mentioned before.
 
   - Finally, use Swagger to create a few **Customers** so you can start testing.  
     (Note: Projects require existing customers.)
