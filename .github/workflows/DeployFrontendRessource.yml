@@ -32,23 +32,24 @@ jobs:
       #  project_id: ${{ secrets.GCP_PROJECT_ID }}
 
     - name: Terraform Init
-      run: echo "Simulating TF Init..."
+      run: echo "Simulating TF init..."
       #env:
        # GOOGLE_CREDENTIALS: ${{ secrets.GCP_SA_KEY }}
 
     - name: Terraform Format
-      run: terraform fmt -check
+      run: echo "Simulating TF format..."
       continue-on-error: true
 
     - name: Terraform Plan
-      #run: terraform plan -out=tfplan
+      run: echo "Simulating TF plan..."
       #env:
         # USE VARIABLES FROM VAR FILE
 
     - name: Terraform Apply
-      #run: terraform apply tfplan
+      run: echo "Simulating TF apply..."
       #env:
         #GOOGLE_CREDENTIALS: ${{ secrets.GCP_SA_KEY }}
 
     - name: Export Terraform Outputs
+      run: echo "Simulating TF export..."
       #id: terraform-outputs
