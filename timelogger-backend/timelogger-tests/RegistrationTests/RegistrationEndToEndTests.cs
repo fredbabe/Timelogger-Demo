@@ -68,7 +68,7 @@ namespace timelogger_tests.RegistrationTests
             };
 
             // Act
-            var response = await _client.PostAsJsonAsync("/api/registration/create-registration", invalidRequest);
+            var response = await _client.PostAsJsonAsync("/api/registrations/create-registration", invalidRequest);
 
             // Assert
             Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
@@ -90,7 +90,7 @@ namespace timelogger_tests.RegistrationTests
             };
 
             // Act
-            var response = await _client.PostAsJsonAsync("/api/registration/create-registration", registrationRequest);
+            var response = await _client.PostAsJsonAsync("/api/registrations/create-registration", registrationRequest);
 
             // Assert
             response.EnsureSuccessStatusCode();
