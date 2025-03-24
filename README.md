@@ -138,7 +138,8 @@
   - Add more observability to catch failures in production.
   - Add possibility to adjust registrations.
   - Add total amount of hours registrated on projects.
-  - Deactivate projects instead of only deleting them. 
+  - Deactivate projects instead of only deleting them.
+  - Add unit tests for all frontend components.
 
   
 </details>
