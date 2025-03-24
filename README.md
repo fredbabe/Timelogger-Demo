@@ -1,7 +1,7 @@
 <div align="center">
   <h1>Timelogger</h1>
   <a href="https://www.buymeacoffee.com/VishwaGauravIn" target="_blank">
-    <img alt="" src="https://skillicons.dev/icons?i=ts,dotnet,tailwind,vite,vitest,react,html" style="vertical-align:center" />
+    <img alt="" src="https://skillicons.dev/icons?i=ts,dotnet,tailwind,vite,vitest,react,git" style="vertical-align:center" />
   </a>
 </div>
 
