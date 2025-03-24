@@ -101,6 +101,8 @@
   - Terraform to deploy resources (skeleton setup only. Minimal code example in TF database)
   - A final GitHub Action to orchestrate all deploy steps to production (mocked for now)
 
+  An example of how the final deploy pipeline would look like:
+  
   ![image](https://github.com/user-attachments/assets/cab8a695-9b93-4615-8fe3-e56711d26386)
 
 </details>
