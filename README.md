@@ -114,7 +114,7 @@
   <br/>
 
   **Backend test stability:**  
-  The backend tests occasionally fail in CI but pass locally. This non-determinism may be related to how the in-memory database is being shared or initialized across tests. Investigating test isolation will be my first step.
+  The backend tests occasionally fail in CI but pass locally. This non-determinism may be related to how the in-memory database is being shared or initialized across tests. Investigating test isolation will be my first step, though it seems more stable now.
 
   **Architecture:**  
   The API is kept in one project for simplicity, but this can be modularized later if the project grows or we need to build an intergration to another system. For instance we could split up the backend into seperates projects such as Timelogger.API, Timelogger.Core and Timelogger.Infrastructure. In that way it would be more easy to expand the architecture with other apis etc. The frontend architecture could be seperated into more defined folders to seperate the input components and other type of needed components later on.
