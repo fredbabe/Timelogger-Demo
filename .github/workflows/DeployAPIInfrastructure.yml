@@ -1,7 +1,6 @@
 name: Deploy ASP.NET Core Infrastructure
 
-on:
-  workflow_dispatch:
+on: {}
   
 jobs:
   terraform:
